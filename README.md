@@ -42,7 +42,7 @@ As can be seen from the pictures above, it does well but there are some critical
 I think had I tweaked the hyper-parameters more, augmented the original images, fed the model a larger dataset or did all of those it would have performed much better. This is probably something I will return to in the future to improve on, as it feels like a very promising endeavour.
 
 ---
-# ~Below is the Readme from Udacity~
+# Below is the Readme from Udacity
 
 ### Setup
 ##### GPU
