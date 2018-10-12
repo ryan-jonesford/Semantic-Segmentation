@@ -1,6 +1,48 @@
 # Semantic Segmentation
+
+[//]: # (Image References)
+[image1]: ./runs/1539311316.9751396/um_000000.png
+[image2]: ./runs/1539311316.9751396/um_000041.png
+[image3]: ./runs/1539311316.9751396/um_000062.png
+[image4]: ./runs/1539311316.9751396/um_000023.png
+[image5]: ./runs/1539311316.9751396/uu_000001.png
+[image6]: ./runs/1539311316.9751396/uu_000010.png
+[image7]: ./runs/1539311316.9751396/uu_000020.png
+[image8]: ./runs/1539311316.9751396/umm_000000.png
+
 ### Introduction
-In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
+The objective of this project, is to label the pixels of a road in images using a Fully Convolutional Network (FCN). 
+
+### Architecture
+The architecture of the FCN that I used is the [FCN-8 architecture](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf) developed at Berkeley. The FCN-8 architecture encoder is based off of the VGG16 model that is per-trained on an ImageNet classifier. The fully connected layers in the FCN-8 have been replaced with 1x1 convolutions. The decoder portion of the architecture up-samples the 1x1 convolutions back to the original image size. Skip connections are added to the model by combining the outputs of two layers, in this case layers 3 with 7 and 4 with 7.
+
+### Optimizer
+The optimizer is an Adam Optimizer minimizing cross-entropy loss. 
+
+### Stop-Loss
+Instead of implementing a loop with a set number of epochs, I've opted for implementing a stop-loss function. If the average loss of the batches ran through the model for an epoch is less than the same loss two epochs ago the model ceases it's training. This resulted is 54 epochs for the given hyper-parameters that I've chosen to use.
+
+### Hyper-Parameters
+- Learning-Rate: .0005
+- Keep Probability: .60
+- Batch Size: 25
+
+### Results
+![][image1]
+![][image2]
+![][image3]
+![][image4]
+![][image5]
+![][image6]
+![][image7]
+![][image8]
+As can be seen from the pictures above, it does well but there are some critical errors in some images that could cause serious problems in a production environment. 
+
+### Reflection
+I think had I tweaked the hyper-parameters more, augmented the original images, fed the model a larger dataset or did all of those it would have performed much better. This is probably something I will return to in the future to improve on, as it feels like a very promising endeavour.
+
+---
+# ~Below is the Readme from Udacity~
 
 ### Setup
 ##### GPU

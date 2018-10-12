@@ -1,0 +1,9 @@
+name: sem-seg
+channels:
+    - conda-forge
+dependencies:
+    - python
+    - tensorflow
+    - numpy
+    - scipy
+    - pillow
